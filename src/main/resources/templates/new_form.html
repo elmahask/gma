@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Save Employee</title>
+</head>
+
+<body>
+	<div class="container">
+		<h3>Employee Directory</h3>
+		<hr>
+		
+		<p class="h4 mb-4">Save Employee</p>
+		
+		<form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="POST">
+			
+			<!-- Add hidden form field to handle the update -->
+			<input type="hidden" th:field="*{id}" />
+						 
+			<input type="text" th:field="*{userName}"
+					class="form-control mb-4 col-4" placeholder="userName">
+			<input type="email" th:field="*{email}"
+					class="form-control mb-4 col-4" placeholder="Email">	
+			<input type="password" th:field="*{password}"
+					class="form-control mb-4 col-4" placeholder="password">
+			<input type="date" name="date" th:field="*{birthdate}"
+					class="form-control mb-4 col-4" placeholder="birthdate">
+<!-- 			<input type="text" th:field="*{sex}"
+					class="form-control mb-4 col-4" placeholder="sex"> -->
+					select Gender: 
+			<select th:field="*{sex}" class="form-control mb-4 col-4">
+				<!-- <option th:value=""disabled selected>Please select...</option> -->
+			    <option th:value="1" th:text="Male"></option>
+			    <option th:value="2" th:text="Female"></option>
+			    
+			</select>
+			<input type="text" th:field="*{mobile}"
+					class="form-control mb-4 col-4" placeholder="mobile">
+			<input type="text" th:field="*{firstname}"
+					class="form-control mb-4 col-4" placeholder="firstname">
+			<input type="text" th:field="*{lastname}"
+					class="form-control mb-4 col-4" placeholder="lastname">
+			<input type="text" th:field="*{idnum}"
+					class="form-control mb-4 col-4" placeholder="idnum">
+			<input type="text" th:field="*{bankAccount}"
+					class="form-control mb-4 col-4" placeholder="bankAccount">
+			<button type="submit" class="btn btn-info col-2">Save</button>	
+		</form>
+		<hr>
+		<a th:href="@{/}">Back to list</a>
+	
+	</div>
+
+
+</body>
+
+</html>

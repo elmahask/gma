@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>Save Employee</title>
+</head>
+
+<body>
+	<div class="container">
+		<h3>Employee Directory</h3>
+		<hr>
+
+		<p class="h4 mb-4">Save Employee</p>
+
+		<form action="#" th:action="@{/operator/saveOperator}" th:object="${operator}" method="POST">
+			<!-- Add hidden form field to handle the update -->
+			<input type="hidden" th:field="*{cd}" /> 
+			<input type="text" th:field="*{username}" class="form-control mb-4 col-4" placeholder="username"> 
+			<input type="password" th:field="*{password}" class="form-control mb-4 col-4" placeholder="password"> 
+				<!-- <input type="text" th:field="*{active}" class="form-control mb-4 col-4" placeholder="active"> -->
+			select Status: 
+			<select th:field="*{active}" class="form-control mb-4 col-4">
+				<!-- <option th:value=""disabled selected>Please select...</option> -->
+			    <option th:value="0" th:text="inActive"></option>
+			    <option th:value="1" th:text="Active"></option>
+			    
+			</select>
+			<input type="date" name="date" th:field="*{creationDate}" class="form-control mb-4 col-4" placeholder="creationDate"> 
+			Select Employee: 
+			<select th:field="*{fkEmpno}" class="form-control mb-4 col-4">
+			<option value="">Please select...</option>
+				<option th:each="employee : ${employees}" th:value="${employee.id}" th:utext="${employee.userName}" />
+			</select>
+			<button type="submit" class="btn btn-info col-2">Save</button>
+
+			<!-- <input type="text" th:field="*{fkEmpno}"
+					class="form-control mb-4 col-4" placeholder="fkEmpno">	 -->
+		</form>
+		<hr>
+		<a th:href="@{/}">Back to list</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<h3 th:fragment="header">Employee Directory</h3>
+<div th:fragment="logout">
+	<form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
+		<input type="submit" value="logout"/>
+	</form>
+	<a class="nav-link" id="logoutLink" >Logout</a>
+	<!-- href="javascript:document.logoutForm.submit()" -->
+</div>
+		
